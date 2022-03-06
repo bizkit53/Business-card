@@ -1,4 +1,6 @@
+import 'package:business_card/logic/education_provider.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
 class EducationTile extends StatelessWidget {
   final String img;
@@ -14,41 +16,58 @@ class EducationTile extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      decoration: BoxDecoration(
-        border: Border.all(),
-      ),
-      child: Row(
-        children: [
-          Expanded(
-            child: Column(
-              children: [
-                Expanded(
-                  child: Image.asset(img),
-                ),
-              ],
-            ),
+    return GestureDetector(
+      onTap: () => Provider.of<EducationProvider>(context, listen: false)
+          .changeBorderShape(),
+      child: Container(
+        decoration: BoxDecoration(
+          border: Border.all(),
+          borderRadius: BorderRadius.circular(
+            Provider.of<EducationProvider>(context, listen: false).borderRadius,
           ),
-          Expanded(
-            flex: 3,
-            child: Column(
-              children: [
-                Expanded(
-                  child: FittedBox(
-                      child: Text(firstCycle, textAlign: TextAlign.center)),
-                ),
-                Expanded(
-                  child: FittedBox(
-                    child: Text(
-                      secondCycle,
-                      textAlign: TextAlign.center,
+        ),
+        child: Row(
+          children: [
+            Expanded(
+              child: Column(
+                children: [
+                  Expanded(
+                    child: Image.asset(img),
+                  ),
+                ],
+              ),
+            ),
+            Expanded(
+              flex: 3,
+              child: Column(
+                children: [
+                  Expanded(
+                    child: FittedBox(
+                      child: Text(
+                        firstCycle,
+                        textAlign: TextAlign.center,
+                        style: const TextStyle(
+                          fontWeight: FontWeight.bold,
+                        ),
+                      ),
                     ),
                   ),
-                ),
-              ],
+                  Expanded(
+                    child: FittedBox(
+                      child: Text(
+                        secondCycle,
+                        textAlign: TextAlign.center,
+                        style: const TextStyle(
+                          fontWeight: FontWeight.bold,
+                        ),
+                      ),
+                    ),
+                  ),
+                ],
+              ),
             ),
-          ),
-        ],
+          ],
+        ),
       ),
     );
   }

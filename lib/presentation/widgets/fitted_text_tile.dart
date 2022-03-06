@@ -1,4 +1,6 @@
+import 'package:business_card/logic/expectations_provider.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
 class FittedTextTile extends StatelessWidget {
   final String content;
@@ -7,12 +9,21 @@ class FittedTextTile extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      decoration: BoxDecoration(
-        border: Border.all(),
-      ),
-      child: FittedBox(
-        child: Text(content),
+    return GestureDetector(
+      onTap: () => Provider.of<ExpectationsProvider>(context, listen: false)
+          .invertColors(),
+      child: Container(
+        decoration: BoxDecoration(
+          color: Provider.of<ExpectationsProvider>(context).backgroundColor,
+          border: Border.all(),
+        ),
+        child: FittedBox(
+          child: Text(
+            content,
+            style: TextStyle(
+                color: Provider.of<ExpectationsProvider>(context).fontColor),
+          ),
+        ),
       ),
     );
   }

@@ -1,4 +1,6 @@
+import 'package:business_card/logic/name_provider.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
 class TextTile extends StatelessWidget {
   final String content;
@@ -7,15 +9,24 @@ class TextTile extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      decoration: BoxDecoration(
-        border: Border.all(),
-      ),
-      child: Padding(
-        padding: const EdgeInsets.all(8.0),
-        child: FittedBox(
-          child: Center(
-            child: Text(content),
+    return GestureDetector(
+      onTap: () =>
+          Provider.of<NameProvider>(context, listen: false).changeFontColor(),
+      child: Container(
+        decoration: BoxDecoration(
+          border: Border.all(),
+        ),
+        child: Padding(
+          padding: const EdgeInsets.all(8.0),
+          child: FittedBox(
+            child: Center(
+              child: Text(
+                content,
+                style: TextStyle(
+                  color: Provider.of<NameProvider>(context).fontColor,
+                ),
+              ),
+            ),
           ),
         ),
       ),

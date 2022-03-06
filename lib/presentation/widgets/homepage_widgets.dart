@@ -4,3 +4,5 @@ export 'work_tile.dart';
 export 'languages_tile.dart';
 export 'fitted_text_tile.dart';
 export 'text_tile.dart';
+export 'photo_tile.dart';
+export 'grid.dart';
