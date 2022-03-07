@@ -26,4 +26,5 @@ flutter:
   assets:
     - assets/images/
     - assets/images/music/
+    - assets/images/free-time/
   uses-material-design: true
