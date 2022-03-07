@@ -4,6 +4,7 @@ import 'package:business_card/logic/languages_provider.dart';
 import 'package:business_card/logic/name_provider.dart';
 import 'package:business_card/logic/photo_provider.dart';
 import 'package:business_card/logic/work_provider.dart';
+import 'package:business_card/presentation/screens/certificate_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
 import 'package:provider/provider.dart';
@@ -75,10 +76,20 @@ class Grid extends StatelessWidget {
           child: FittedTextTile(
               content: Provider.of<ExpectationsProvider>(context).expectations),
         ),
-        const StaggeredGridTile.count(
-          crossAxisCellCount: 1,
-          mainAxisCellCount: 1,
-          child: ImageTile(img: 'assets/images/badge-Prince2.png'),
+        GestureDetector(
+          onTap: () => Navigator.push(
+            context,
+            MaterialPageRoute(
+              builder: (context) => const CertificateScreen(
+                imgSource: 'assets/images/prince2-cert.png',
+              ),
+            ),
+          ),
+          child: const StaggeredGridTile.count(
+            crossAxisCellCount: 1,
+            mainAxisCellCount: 1,
+            child: ImageTile(img: 'assets/images/badge-Prince2.png'),
+          ),
         ),
         const StaggeredGridTile.count(
           crossAxisCellCount: 1,
@@ -90,15 +101,35 @@ class Grid extends StatelessWidget {
           mainAxisCellCount: 1,
           child: ImageTile(img: 'assets/images/music-logo.png'),
         ),
-        const StaggeredGridTile.count(
-          crossAxisCellCount: 1,
-          mainAxisCellCount: 1,
-          child: ImageTile(img: 'assets/images/badge-SMC.png'),
+        GestureDetector(
+          onTap: () => Navigator.push(
+            context,
+            MaterialPageRoute(
+              builder: (context) => const CertificateScreen(
+                imgSource: 'assets/images/scrum-cert.png',
+              ),
+            ),
+          ),
+          child: const StaggeredGridTile.count(
+            crossAxisCellCount: 1,
+            mainAxisCellCount: 1,
+            child: ImageTile(img: 'assets/images/badge-SMC.png'),
+          ),
         ),
-        const StaggeredGridTile.count(
-          crossAxisCellCount: 1,
-          mainAxisCellCount: 1,
-          child: ImageTile(img: 'assets/images/badge-Agile.png'),
+        GestureDetector(
+          onTap: () => Navigator.push(
+            context,
+            MaterialPageRoute(
+              builder: (context) => const CertificateScreen(
+                imgSource: 'assets/images/agile-cert.png',
+              ),
+            ),
+          ),
+          child: const StaggeredGridTile.count(
+            crossAxisCellCount: 1,
+            mainAxisCellCount: 1,
+            child: ImageTile(img: 'assets/images/badge-Agile.png'),
+          ),
         ),
       ],
     );
