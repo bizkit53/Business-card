@@ -7,6 +7,7 @@ import 'package:business_card/logic/work_provider.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
 import 'package:provider/provider.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 import 'homepage_widgets.dart';
 
@@ -41,10 +42,14 @@ class Grid extends StatelessWidget {
             secondCycle: Provider.of<EducationProvider>(context).secondCycle,
           ),
         ),
-        const StaggeredGridTile.count(
-          crossAxisCellCount: 1,
-          mainAxisCellCount: 1,
-          child: ImageTile(img: 'assets/images/linkedin-logo.png'),
+        GestureDetector(
+          onTap: () =>
+              Launch.launchUrl('https://www.linkedin.com/in/ciuba-piotr/'),
+          child: const StaggeredGridTile.count(
+            crossAxisCellCount: 1,
+            mainAxisCellCount: 1,
+            child: ImageTile(img: 'assets/images/linkedin-logo.png'),
+          ),
         ),
         StaggeredGridTile.count(
           crossAxisCellCount: 1,
@@ -97,5 +102,15 @@ class Grid extends StatelessWidget {
         ),
       ],
     );
+  }
+}
+
+class Launch {
+  static void launchUrl(String url) async {
+    if (await canLaunch(url)) {
+      await launch(url);
+    } else {
+      throw 'Could not launch $url';
+    }
   }
 }
