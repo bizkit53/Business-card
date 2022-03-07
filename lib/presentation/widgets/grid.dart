@@ -5,6 +5,7 @@ import 'package:business_card/logic/name_provider.dart';
 import 'package:business_card/logic/photo_provider.dart';
 import 'package:business_card/logic/work_provider.dart';
 import 'package:business_card/presentation/screens/certificate_screen.dart';
+import 'package:business_card/presentation/screens/music_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
 import 'package:provider/provider.dart';
@@ -96,10 +97,18 @@ class Grid extends StatelessWidget {
           mainAxisCellCount: 1,
           child: ImageTile(img: 'assets/images/free-time-logo.png'),
         ),
-        const StaggeredGridTile.count(
-          crossAxisCellCount: 1,
-          mainAxisCellCount: 1,
-          child: ImageTile(img: 'assets/images/music-logo.png'),
+        GestureDetector(
+          onTap: () => Navigator.push(
+            context,
+            MaterialPageRoute(
+              builder: (context) => const MusicScreen(),
+            ),
+          ),
+          child: const StaggeredGridTile.count(
+            crossAxisCellCount: 1,
+            mainAxisCellCount: 1,
+            child: ImageTile(img: 'assets/images/music-logo.png'),
+          ),
         ),
         GestureDetector(
           onTap: () => Navigator.push(
